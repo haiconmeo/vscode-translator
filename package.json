@@ -1,0 +1,105 @@
+{
+    "name": "translatorwithllm",
+    "displayName": "Translate with LLM ",
+    "description": "Translate with LLM m2m100-1.2b",
+    "version": "0.0.1",
+    "publisher": "haiconmeohhm",
+    "icon": "logo.png",
+    "engines": {
+        "vscode": "^1.26.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "Translator",
+        "Translate",
+        "English",
+        "Chinese"
+    ],
+    "bugs": {
+        "url": "https://haiconmeo.info",
+        "email": "haiconmeo54@gmail.com"
+    },
+    "homepage": "https://github.com/haiconmeo/vscode-translator/blob/main/README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/haiconmeo/vscode-translator.git"
+    },
+    "activationEvents": [
+        "*",
+        "onCommand:translator.translate",
+        "onCommand:translator.toggleCaptureWord"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [{
+                "command": "translator.translate",
+                "title": "Translate"
+            },
+            {
+                "command": "translator.replaceWithTranslation",
+                "title": "Replace with Translation"
+            },
+            {
+                "command": "translator.toggleCaptureWord",
+                "title": "Toggle - Capture Word"
+            }
+        ],
+        "menus": {
+            "editor/context": [{
+                    "command": "translator.translate",
+                    "group": "navigation@1"
+                },
+                {
+                    "command": "translator.replaceWithTranslation",
+                    "group": "navigation@2"
+                }
+            ]
+        },
+        "keybindings": [{
+            "command": "translator.translate",
+            "key": "ctrl+alt+z"
+        }],
+        "configuration": {
+            "type": "object",
+            "title": "Translator",
+            "properties": {
+                "translator.captureWord": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Whether to translate when hovering on a word."
+                },
+                "translator.sourceLanguage": {
+                    "type": "string",
+                    "default": "en",
+                    "description": "source language"
+                },
+                "translator.targetLanguage": {
+                    "type": "string",
+                    "default": "vi",
+                    "description": "target language"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "tslint": "tslint --project tsconfig.json"
+    },
+    "devDependencies": {
+        "typescript": "^3.9.7",
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
+    },
+    "dependencies": {
+        "applicationinsights": "^1.0.5",
+        "axios": "^0.18.0"
+    }
+}
