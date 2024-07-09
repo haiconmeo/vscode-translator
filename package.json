@@ -2,7 +2,7 @@
     "name": "translatorwithllm",
     "displayName": "Translate with LLM ",
     "description": "Translate with LLM m2m100-1.2b",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "haiconmeohhm",
     "icon": "logo.png",
     "engines": {

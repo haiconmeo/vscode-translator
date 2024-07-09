@@ -77,7 +77,10 @@ export class Translator {
 
     public static async translate(source: string, showErrorMessage: boolean = false): Promise<string> {
         try {
-            const result = (await axios.get(`https://mute-art-ba3b.hoanghuumanh54.workers.dev/?source_lang=${Translator.sourceLang}&target_lang=${Translator.targetLanguage}&text=${source}`)).data;
+            const sourceLang = encodeURIComponent(Translator.sourceLang);
+            const targetLang = encodeURIComponent(Translator.targetLanguage);
+            const text = encodeURIComponent(source);
+            const result = (await axios.get(`https://mute-art-ba3b.hoanghuumanh54.workers.dev/?source_lang=${sourceLang}&target_lang=${targetLang}&text=${text}`)).data;
             return result['translated_text'];
         } catch (error) {
             if (showErrorMessage) {
